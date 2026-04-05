@@ -22,18 +22,18 @@
     --shadow: 0 4px 30px rgba(42,36,32,0.08);
     --shadow-lg: 0 12px 60px rgba(42,36,32,0.12);
   }
-
+ 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--cream);
     color: var(--text);
     overflow-x: hidden;
   }
-
+ 
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
@@ -105,7 +105,7 @@
     padding: .65rem 1.8rem; border-radius: 100px;
     font-weight: 500; border: none;
   }
-
+ 
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -201,7 +201,7 @@
     font-size: 2.4rem; font-weight: 600; color: var(--dark); line-height: 1;
   }
   .stat-label { font-size: .78rem; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; }
-
+ 
   /* ── SERVICES ── */
   .section { padding: 100px 5%; }
   .section-tag {
@@ -220,7 +220,7 @@
     line-height: 1.75; max-width: 520px;
   }
   .section-header { margin-bottom: 4rem; }
-
+ 
   #servicios { background: var(--cream); }
   .services-grid {
     display: grid;
@@ -262,7 +262,7 @@
     font-size: .88rem; color: var(--text-light);
     line-height: 1.7;
   }
-
+ 
   /* ── WHY US ── */
   #nosotros { background: var(--warm-white); }
   .why-grid {
@@ -310,7 +310,7 @@
     font-weight: 500; color: var(--dark); margin-bottom: .3rem;
   }
   .why-point p { font-size: .87rem; color: var(--text-light); line-height: 1.65; }
-
+ 
   /* ── PROCESS ── */
   #proceso { background: var(--cream); }
   .process-steps {
@@ -339,7 +339,7 @@
     margin-bottom: .5rem;
   }
   .process-step p { font-size: .83rem; color: var(--text-light); line-height: 1.65; }
-
+ 
   /* ── PLANS ── */
   #planes { background: var(--warm-white); }
   .plans-grid {
@@ -438,7 +438,7 @@
   .plan-card.custom .plan-cta:hover {
     background: var(--accent); transform: translateY(-1px);
   }
-
+ 
   /* ── TESTIMONIALS ── */
   #testimonios { background: var(--cream); }
   .testimonials-grid {
@@ -469,7 +469,7 @@
   }
   .author-name { font-weight: 500; font-size: .88rem; color: var(--dark); }
   .author-role { font-size: .78rem; color: var(--text-light); }
-
+ 
   /* ── FAQ ── */
   #faq { background: var(--warm-white); }
   .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
@@ -506,7 +506,7 @@
     padding: 1rem 1.6rem 1.4rem;
     font-size: .87rem; color: var(--text-light); line-height: 1.75;
   }
-
+ 
   /* ── CTA BAND ── */
   .cta-band {
     background: var(--dark);
@@ -537,7 +537,7 @@
     background: #b8742a;
     box-shadow: 0 10px 30px rgba(200,132,58,.45);
   }
-
+ 
   /* ── CONTACT ── */
   #contacto { background: var(--cream); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -595,7 +595,7 @@
     box-shadow: 0 8px 24px rgba(200,132,58,.3);
     transform: translateY(-1px);
   }
-
+ 
   /* ── FOOTER ── */
   footer {
     background: var(--dark);
@@ -648,7 +648,7 @@
     color: var(--accent-light);
     background: rgba(200,132,58,.1);
   }
-
+ 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -659,7 +659,7 @@
     transition: opacity .7s ease, transform .7s ease;
   }
   .reveal.visible { opacity: 1; transform: none; }
-
+ 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .why-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -676,10 +676,97 @@
     .footer-top { grid-template-columns: 1fr; }
     .why-card-float { position: static; margin-top: 1rem; border-radius: 16px; display: inline-block; }
   }
+ 
+  /* ── TERMS MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(42,36,32,.55); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--warm-white);
+    border-radius: 24px;
+    max-width: 760px; width: 100%;
+    max-height: 88vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 24px 80px rgba(42,36,32,.22);
+    animation: modalIn .3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(.97); }
+    to { opacity: 1; transform: none; }
+  }
+  .modal-header {
+    padding: 2rem 2.4rem 1.2rem;
+    border-bottom: 1px solid var(--sand);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .modal-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400; color: var(--dark);
+  }
+  .modal-header p { font-size: .8rem; color: var(--text-light); margin-top: .3rem; }
+  .modal-close {
+    background: var(--sand); border: none; cursor: pointer;
+    width: 36px; height: 36px; border-radius: 50%;
+    font-size: 1.1rem; color: var(--dark); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .modal-close:hover { background: var(--taupe); }
+  .modal-body {
+    padding: 1.8rem 2.4rem 2.4rem;
+    overflow-y: auto;
+    font-size: .88rem; line-height: 1.8; color: var(--text);
+  }
+  .modal-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--dark);
+    margin: 1.8rem 0 .6rem;
+  }
+  .modal-body h3:first-child { margin-top: 0; }
+  .modal-body p { margin-bottom: .8rem; color: var(--text-light); }
+  .modal-body ul { padding-left: 1.2rem; margin-bottom: .8rem; color: var(--text-light); }
+  .modal-body ul li { margin-bottom: .4rem; }
+  .modal-body .highlight-box {
+    background: var(--accent-light); border-radius: 12px;
+    padding: 1rem 1.2rem; margin: 1rem 0;
+    border-left: 3px solid var(--accent);
+    color: var(--brown);
+  }
+ 
+  /* ── FORM FEEDBACK ── */
+  .form-msg {
+    display: none; padding: 1rem 1.2rem; border-radius: 12px;
+    font-size: .88rem; font-weight: 500; text-align: center;
+  }
+  .form-msg.success { background: var(--green-light); color: var(--green); display: block; }
+  .form-msg.error { background: #fde8e8; color: #b91c1c; display: block; }
+  .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none !important; }
+ 
+  /* ── TERMS CHECKBOX ── */
+  .terms-check {
+    display: flex; align-items: flex-start; gap: .7rem;
+    font-size: .82rem; color: var(--text-light); line-height: 1.5;
+  }
+  .terms-check input[type="checkbox"] {
+    width: 16px; height: 16px; min-width: 16px; margin-top: 2px;
+    accent-color: var(--accent); cursor: pointer;
+    border-radius: 4px; border: 1.5px solid var(--taupe);
+    appearance: auto;
+  }
+  .terms-check a {
+    color: var(--accent); text-decoration: underline; cursor: pointer;
+    background: none; border: none; font-size: .82rem; font-family: inherit;
+    padding: 0;
+  }
+  .terms-check a:hover { color: var(--dark); }
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo"><em>Alvarez</em> <span>Marketing</span></a>
@@ -689,6 +776,7 @@
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#planes">Planes</a></li>
     <li><a href="#testimonios">Clientes</a></li>
+    <li><a href="#" onclick="openModal(event)" style="color:var(--text-light)">Términos</a></li>
     <li><a href="#contacto" class="nav-cta">Contactar</a></li>
   </ul>
   <button class="hamburger" id="menuBtn" aria-label="Menú">
@@ -701,9 +789,10 @@
   <a href="#proceso">Proceso</a>
   <a href="#planes">Planes</a>
   <a href="#testimonios">Clientes</a>
+  <a href="#" onclick="openModal(event)">Términos y Condiciones</a>
   <a href="#contacto" class="m-cta">Contactar</a>
 </div>
-
+ 
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
@@ -732,7 +821,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- SERVICES -->
 <section class="section" id="servicios">
   <div class="section-header">
@@ -773,7 +862,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- WHY US -->
 <section class="section" id="nosotros">
   <div class="why-grid">
@@ -821,7 +910,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PROCESS -->
 <section class="section" id="proceso">
   <div class="section-header" style="text-align:center">
@@ -851,7 +940,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PLANS -->
 <section class="section" id="planes">
   <div class="section-header" style="text-align:center; max-width:600px; margin:0 auto 4rem">
@@ -860,7 +949,7 @@
     <p class="section-sub" style="margin:0 auto">Sin sorpresas. Escoge el plan que mejor se adapta a tu negocio y comencemos a trabajar juntos.</p>
   </div>
   <div class="plans-grid">
-
+ 
     <!-- BÁSICO -->
     <div class="plan-card basic reveal">
       <p class="plan-name">Plan Esencial</p>
@@ -877,7 +966,7 @@
       </ul>
       <a href="#contacto" class="plan-cta">Comenzar ahora</a>
     </div>
-
+ 
     <!-- PRO -->
     <div class="plan-card pro reveal">
       <span class="plan-badge">Más popular</span>
@@ -897,7 +986,7 @@
       </ul>
       <a href="#contacto" class="plan-cta">Elegir este plan</a>
     </div>
-
+ 
     <!-- CUSTOM -->
     <div class="plan-card custom reveal">
       <p class="plan-name">Plan Personalizado</p>
@@ -915,10 +1004,10 @@
       </ul>
       <a href="#contacto" class="plan-cta">Consultar precio →</a>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <!-- TESTIMONIALS -->
 <section class="section" id="testimonios">
   <div class="section-header" style="text-align:center">
@@ -961,7 +1050,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- FAQ -->
 <section class="section" id="faq">
   <div class="section-header" style="text-align:center">
@@ -1016,14 +1105,14 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- CTA BAND -->
 <div class="cta-band">
   <h2>¿Listo para llevar tu marca<br>al <em>siguiente nivel</em>?</h2>
   <p>Hablemos sin compromiso. La consulta inicial es completamente gratuita.</p>
   <a href="#contacto" class="btn-primary">Agendar consulta gratuita →</a>
 </div>
-
+ 
 <!-- CONTACT -->
 <section class="section" id="contacto">
   <div class="contact-grid">
@@ -1034,7 +1123,7 @@
       <div class="contact-items">
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <span>hola@alvarezmarketing.com</span>
+          <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0a6265666b4a6b667c6b786f70676b78616f7e63646d24696567">[email&#160;protected]</a></span>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
@@ -1051,39 +1140,52 @@
       </div>
     </div>
     <div class="contact-form reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre">
+      <form id="contactForm" action="https://formspree.io/f/mjgpjkav" method="POST" novalidate>
+        <div style="display:flex;flex-direction:column;gap:1.1rem;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Tu empresa">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+57 300 000 0000">
+          </div>
+          <div class="form-group">
+            <label for="plan">Plan de interés</label>
+            <select id="plan" name="plan">
+              <option value="">Selecciona un plan</option>
+              <option>Plan Esencial · $150/mes</option>
+              <option>Plan Profesional · $350/mes</option>
+              <option>Plan Personalizado · Consultar precio</option>
+              <option>Aún no lo sé, quiero asesoramiento</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu negocio y qué objetivos quieres alcanzar…" required></textarea>
+          </div>
+          <div class="terms-check">
+            <input type="checkbox" id="terminos" required>
+            <label for="terminos">He leído y acepto los <a onclick="openModal(event)" href="#">Términos y Condiciones</a> del servicio de <em style="font-style:italic;font-family:'Cormorant Garamond',serif">Alvarez Marketing</em>.</label>
+          </div>
+          <div class="form-msg" id="formMsg"></div>
+          <button type="submit" class="form-submit" id="formSubmit">Enviar consulta →</button>
         </div>
-        <div class="form-group">
-          <label>Empresa</label>
-          <input type="text" placeholder="Tu empresa">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="tu@email.com">
-      </div>
-      <div class="form-group">
-        <label>Plan de interés</label>
-        <select>
-          <option value="">Selecciona un plan</option>
-          <option>Plan Esencial · $150/mes</option>
-          <option>Plan Profesional · $350/mes</option>
-          <option>Plan Personalizado · Consultar precio</option>
-          <option>Aún no lo sé, quiero asesoramiento</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Mensaje</label>
-        <textarea placeholder="Cuéntanos sobre tu negocio y qué objetivos quieress alcanzar…"></textarea>
-      </div>
-      <button class="form-submit">Enviar consulta →</button>
+      </form>
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1113,7 +1215,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 <em style="font-style:italic;font-family:'Cormorant Garamond',serif;color:rgba(250,247,242,.7)">Alvarez Marketing</em>. Todos los derechos reservados.</span>
+    <span>© 2026 <em style="font-style:italic;font-family:'Cormorant Garamond',serif;color:rgba(250,247,242,.7)">Alvarez Marketing</em>. Todos los derechos reservados. · <a href="#" onclick="openModal(event)" style="color:rgba(250,247,242,.45);text-decoration:underline;font-size:.8rem">Términos y Condiciones</a></span>
     <div class="social-links">
       <a href="#" class="social-link" aria-label="Instagram">IG</a>
       <a href="#" class="social-link" aria-label="LinkedIn">in</a>
@@ -1122,26 +1224,89 @@
     </div>
   </div>
 </footer>
-
+ 
+<!-- TERMS & CONDITIONS MODAL -->
+<div class="modal-overlay" id="termsModal">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <div>
+        <h2 id="modalTitle">Términos y Condiciones</h2>
+        <p>Última actualización: abril de 2026 · <em style="font-family:'Cormorant Garamond',serif;font-style:italic">Alvarez Marketing</em></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body">
+ 
+      <h3>1. Quiénes somos y a qué nos dedicamos</h3>
+      <p><em style="font-family:'Cormorant Garamond',serif;font-style:italic">Alvarez Marketing</em> es una agencia de consultoría, marketing y publicidad con sede en Bogotá, Colombia. Nos especializamos en diseñar y ejecutar estrategias digitales para empresas y emprendedores de toda Latinoamérica que buscan crecer de forma sostenible. Los presentes Términos y Condiciones regulan la relación entre la agencia y cualquier persona natural o jurídica que contrate nuestros servicios.</p>
+ 
+      <h3>2. Cómo funciona la contratación</h3>
+      <p>El proceso de contratación de nuestros servicios sigue estos pasos:</p>
+      <ul>
+        <li><strong>Consulta inicial:</strong> El cliente se comunica con nosotros a través del formulario de contacto, correo electrónico o WhatsApp. Esta primera consulta es completamente gratuita y sin compromiso.</li>
+        <li><strong>Diagnóstico y propuesta:</strong> En un plazo máximo de 24 horas hábiles, un especialista de Alvarez Marketing se pone en contacto para agendar una reunión de diagnóstico (virtual o presencial). Con base en esa reunión elaboramos una propuesta formal que detalla el alcance del servicio, entregables, cronograma y valor mensual.</li>
+        <li><strong>Aceptación y firma:</strong> El cliente revisa la propuesta y, si está de acuerdo, firma un contrato de prestación de servicios. Ningún trabajo inicia sin contrato firmado por ambas partes.</li>
+        <li><strong>Pago inicial:</strong> Para activar el servicio se realiza el pago del primer mes por adelantado. Los pagos subsiguientes se realizan los primeros cinco días hábiles de cada mes.</li>
+        <li><strong>Inicio del servicio:</strong> Una vez confirmado el pago, el equipo asignado comienza la fase de onboarding en un plazo de 48 horas hábiles.</li>
+      </ul>
+ 
+      <h3>3. Planes y precios</h3>
+      <div class="highlight-box">
+        Los precios publicados en este sitio (Plan Esencial desde $150/mes y Plan Profesional desde $350/mes) están expresados en dólares estadounidenses (USD) e incluyen únicamente los honorarios de gestión de Alvarez Marketing. El presupuesto de pauta publicitaria (inversión en plataformas como Meta Ads, Google Ads, TikTok Ads) es siempre adicional y corre por cuenta del cliente.
+      </div>
+      <p>Todos los planes tienen una permanencia mínima de tres (3) meses, período necesario para ejecutar la estrategia y obtener resultados medibles. Transcurridos los tres meses, el servicio se renueva automáticamente mes a mes, salvo que el cliente notifique su intención de no renovar con al menos quince (15) días de anticipación.</p>
+ 
+      <h3>4. Plan Personalizado: cómo funciona</h3>
+      <p>El Plan Personalizado está diseñado para empresas, cadenas, marcas con múltiples líneas de negocio o proyectos que requieren un alcance mayor al que cubren los planes estándar. Su funcionamiento es el siguiente:</p>
+      <ul>
+        <li>El cliente describe su requerimiento a través del formulario de contacto o directamente con su gestor de cuenta.</li>
+        <li>Alvarez Marketing realiza un análisis interno del alcance, recursos necesarios y complejidad del proyecto.</li>
+        <li>En un plazo de 3 a 5 días hábiles se entrega una propuesta económica detallada, elaborada específicamente para ese requerimiento. No existe un precio fijo publicado porque cada proyecto es distinto.</li>
+        <li>El cliente puede aceptar, rechazar o negociar la propuesta sin ningún costo por el proceso de cotización.</li>
+      </ul>
+      <p>Alvarez Marketing se reserva el derecho de no aceptar proyectos que estén fuera de su área de expertise o que presenten conflicto de interés con otros clientes activos.</p>
+ 
+      <h3>5. Entregables y plazos</h3>
+      <p>Los entregables específicos de cada plan (publicaciones, reportes, campañas, sesiones de consultoría, etc.) quedan detallados en el contrato individual firmado con cada cliente. Alvarez Marketing se compromete a cumplir los plazos acordados siempre que el cliente proporcione en tiempo y forma los materiales, accesos e información necesarios para la ejecución del trabajo.</p>
+ 
+      <h3>6. Propiedad intelectual</h3>
+      <p>Todo el contenido creado por Alvarez Marketing en el marco de la relación contractual —incluyendo textos, diseños, estrategias, campañas y piezas gráficas— pasa a ser propiedad del cliente una vez efectuado el pago correspondiente al mes en que fue producido. Alvarez Marketing se reserva el derecho de incluir el trabajo realizado en su portafolio, salvo que el cliente solicite expresamente la confidencialidad por escrito.</p>
+ 
+      <h3>7. Confidencialidad</h3>
+      <p>Alvarez Marketing se compromete a no divulgar información confidencial del cliente (datos financieros, estrategias de negocio, bases de datos, información de clientes) a terceros, salvo requerimiento legal expreso. Esta obligación se mantiene vigente incluso después de finalizada la relación contractual.</p>
+ 
+      <h3>8. Cancelación y reembolsos</h3>
+      <p>Los honorarios de gestión abonados no son reembolsables una vez iniciado el período mensual, dado que los recursos humanos y herramientas se asignan desde el primer día. En caso de que Alvarez Marketing no pueda cumplir con los entregables pactados por causas imputables a la agencia, se ofrecerá una compensación proporcional al período no ejecutado o la extensión del servicio sin costo adicional.</p>
+ 
+      <h3>9. Modificaciones a estos términos</h3>
+      <p>Alvarez Marketing puede actualizar estos Términos y Condiciones en cualquier momento. Los cambios serán notificados a los clientes activos con al menos diez (10) días de anticipación por correo electrónico. El uso continuado del servicio tras esa notificación implica la aceptación de los nuevos términos.</p>
+ 
+      <h3>10. Contacto y resolución de disputas</h3>
+      <p>Para cualquier consulta sobre estos términos, el cliente puede escribir a <strong>hola@alvarezmarketing.com</strong> o llamar al <strong>+57 317 6979439</strong>. Ante cualquier diferencia, las partes se comprometen a intentar una resolución amigable antes de acudir a instancias legales. La legislación aplicable es la de la República de Colombia.</p>
+ 
+    </div>
+  </div>
+</div>
+ 
 <script>
   // Navbar scroll
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
-
+ 
   // Mobile menu
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', () => menu.classList.toggle('open'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+ 
   // Reveal on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
   // FAQ accordion
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1157,16 +1322,84 @@
       }
     });
   });
-
-  // Form submit feedback
-  document.querySelector('.form-submit').addEventListener('click', function() {
-    this.textContent = '¡Mensaje enviado! ✓';
-    this.style.background = 'var(--green)';
-    setTimeout(() => {
-      this.textContent = 'Enviar consulta →';
-      this.style.background = '';
-    }, 3000);
+ 
+  // Terms modal
+  function openModal(e) {
+    if (e) e.preventDefault();
+    document.getElementById('termsModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('termsModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('termsModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
   });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+ 
+  // Functional contact form (Formspree)
+  const contactForm = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  const formSubmit = document.getElementById('formSubmit');
+ 
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      formMsg.className = 'form-msg';
+      formMsg.textContent = '';
+ 
+      // Validate required fields
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+      const terminos = document.getElementById('terminos').checked;
+ 
+      if (!nombre || !email || !mensaje) {
+        formMsg.className = 'form-msg error';
+        formMsg.textContent = 'Por favor completa los campos obligatorios (nombre, email y mensaje).';
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        formMsg.className = 'form-msg error';
+        formMsg.textContent = 'Ingresa un correo electrónico válido.';
+        return;
+      }
+      if (!terminos) {
+        formMsg.className = 'form-msg error';
+        formMsg.textContent = 'Debes aceptar los Términos y Condiciones para continuar.';
+        return;
+      }
+ 
+      formSubmit.disabled = true;
+      formSubmit.textContent = 'Enviando…';
+ 
+      try {
+        const data = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+ 
+        if (response.ok) {
+          formMsg.className = 'form-msg success';
+          formMsg.textContent = '¡Mensaje enviado! Te contactaremos en menos de 24 horas hábiles.';
+          contactForm.reset();
+        } else {
+          const json = await response.json().catch(() => ({}));
+          formMsg.className = 'form-msg error';
+          formMsg.textContent = json.errors ? json.errors.map(e => e.message).join(', ') : 'Hubo un error al enviar. Intenta nuevamente o escríbenos directamente.';
+        }
+      } catch (err) {
+        formMsg.className = 'form-msg error';
+        formMsg.textContent = 'Error de conexión. Por favor intenta nuevamente.';
+      } finally {
+        formSubmit.disabled = false;
+        formSubmit.textContent = 'Enviar consulta →';
+      }
+    });
+  }
 </script>
 </body>
 </html>
